@@ -7,8 +7,8 @@ namespace litefeel
     public class IOSPlatform : PlatformAPI
     {
 
-        [DllImport("__internal")]
-        public static extern void _CPAPISavaToAlbum(string filename);
+        [DllImport("__Internal")]
+        private static extern void _CPAPISavaToAlbum(string filename);
 
 
         public override void SaveToAlbum(string filename)
