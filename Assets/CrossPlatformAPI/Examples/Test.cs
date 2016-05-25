@@ -2,8 +2,11 @@ using UnityEngine;
 using System.Collections;
 using litefeel;
 using System.IO;
+using UnityEngine.UI;
 
 public class Test : MonoBehaviour {
+
+    public InputField inputField;
 
 	// Use this for initialization
 	void Start () {
@@ -13,6 +16,11 @@ public class Test : MonoBehaviour {
 
         StartCoroutine(MoveToPersistentPath());
         MoveToPersistentPath();
+
+        if (inputField == null)
+        {
+            inputField = GameObject.Find("InputField").GetComponent<InputField>();
+        }
     }
 
     // Update is called once per frame
@@ -35,4 +43,16 @@ public class Test : MonoBehaviour {
         string filename = Application.persistentDataPath + "/abc.png";
         CrossPlatformAPI.SaveToAlbum(filename);
     }
+
+    public void PasteToClipboard()
+    {
+        CrossPlatformAPI.PasteToClipboard(inputField.text);
+    }
+
+    public void CopyFromClipboard()
+    {
+        string text = CrossPlatformAPI.CopyFromClipboard();
+        inputField.text = text;
+    }
+
 }
