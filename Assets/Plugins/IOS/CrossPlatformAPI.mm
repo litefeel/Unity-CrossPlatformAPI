@@ -39,7 +39,7 @@
 static SaveToAlbumObj* saveToAlbumObj = nil;
 
 // Converts C style string to NSString
-NSString* CreateNSString (const char* string)
+NSString* _CPAPICreateNSString (const char* string)
 {
     if (string)
         return [NSString stringWithUTF8String: string];
@@ -48,7 +48,7 @@ NSString* CreateNSString (const char* string)
 }
 
 // Helper method to create C string copy
-char* MakeStringCopy (const char* string)
+char* _CPAPICopyString (const char* string)
 {
     if (string == NULL)
         return NULL;
@@ -58,22 +58,31 @@ char* MakeStringCopy (const char* string)
     return res;
 }
 
-
-
-
 // When native code plugin is implemented in .mm / .cpp file, then functions
 // should be surrounded with extern "C" block to conform C function naming rules
 extern "C" {
-    
-    
+
     void _CPAPISavaToAlbum(const char* cfilename)
     {
         if (saveToAlbumObj == nil)
             saveToAlbumObj = [[SaveToAlbumObj alloc] init];
         
-        NSString *filename = [NSString stringWithUTF8String:cfilename];
+        NSString *filename = _CPAPICreateNSString(cfilename);
         [saveToAlbumObj save:filename];
-        
+    }
+
+    void _CPAPIPasteToClipboard(const char* ctext)
+    {
+        NSString *text = _CPAPICreateNSString(ctext);
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        pasteboard.string = text;
     }
     
+    const char* _CPAPICopyFromClipboard()
+    {
+        UIPasteboard *pasteboard = [UIPasteboard generalPasteboard];
+        // By default mono string marshaler creates .Net string for returned UTF-8 C string 
+        // and calls free for returned value, thus returned strings should be allocated on heap
+        return _CPAPICopyString([pasteboard.string UTF8String]);
+    }
 }

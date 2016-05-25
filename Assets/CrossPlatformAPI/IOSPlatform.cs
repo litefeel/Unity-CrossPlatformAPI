@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
+using System;
 
 namespace litefeel
 {
@@ -10,10 +11,26 @@ namespace litefeel
         [DllImport("__Internal")]
         private static extern void _CPAPISavaToAlbum(string filename);
 
+        [DllImport("__Internal")]
+        private static extern void _CPAPIPasteToClipboard(string text);
+
+        [DllImport("__Internal")]
+        private static extern string _CPAPICopyFromClipboard();
 
         public override void SaveToAlbum(string filename)
         {
             _CPAPISavaToAlbum(filename);
         }
+
+        public override void PasteToClipboard(string text)
+        {
+            _CPAPIPasteToClipboard(text);
+        }
+
+        public override string CopyFromClipboard()
+        {
+            return _CPAPICopyFromClipboard();
+        }
+
     }
 }

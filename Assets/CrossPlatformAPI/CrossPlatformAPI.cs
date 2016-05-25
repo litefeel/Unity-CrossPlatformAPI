@@ -31,6 +31,18 @@ namespace litefeel
             Init();
             api.SaveToAlbum(filename);
         }
+
+        public static void PasteToClipboard(string text)
+        {
+            Init();
+            api.PasteToClipboard(text);
+        }
+
+        public static string CopyFromClipboard()
+        {
+            Init();
+            return api.CopyFromClipboard();
+        }
     }
 
 }

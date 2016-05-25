@@ -20,6 +20,17 @@ namespace litefeel
         {
             api.CallStatic("saveToAlbum", new string[] { filename });
         }
+
+        public override void PasteToClipboard(string text)
+        {
+            Debug.Log("AndroidPlatform.PasteToClipboard text:" + text);
+        }
+
+        public override string CopyFromClipboard()
+        {
+            Debug.Log("AndroidPlatform.CopyFromClipboard");
+            return "";
+        }
     }
 }
 //#endif
