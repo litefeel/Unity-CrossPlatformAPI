@@ -14,6 +14,7 @@ namespace litefeel
         public AndroidPlatform()
         {
             api = new AndroidJavaClass("litefeel.crossplatformapi.AndroidPlatform");
+            api.CallStatic("init", new string[] { });
         }
 
         public override void SaveToAlbum(string filename)
@@ -23,13 +24,12 @@ namespace litefeel
 
         public override void PasteToClipboard(string text)
         {
-            Debug.Log("AndroidPlatform.PasteToClipboard text:" + text);
+            api.CallStatic("pasteToClipboard", new string[] { text });
         }
 
         public override string CopyFromClipboard()
         {
-            Debug.Log("AndroidPlatform.CopyFromClipboard");
-            return "";
+            return api.CallStatic<string>("copyFromClipboard", new string[] {}); ;
         }
     }
 }
