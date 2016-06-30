@@ -43,6 +43,19 @@ namespace litefeel
             Init();
             return api.CopyFromClipboard();
         }
+        
+        public static void NativeShareImage(params string[] images)
+        {
+            Init();
+            api.NativeShareImage(images);
+        }
+        
+        public static void NativeShareText(string text)
+        {
+            Init();
+            api.NativeShareText(text);
+        }
+
     }
 
 }

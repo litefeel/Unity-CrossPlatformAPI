@@ -55,4 +55,12 @@ public class Test : MonoBehaviour {
         inputField.text = text;
     }
 
+    public void NativeShare()
+    {
+        print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
+        string filename = Application.persistentDataPath + "/abc.png";
+        print("share image " + filename);
+        CrossPlatformAPI.NativeShareImage(filename);
+    }
+
 }

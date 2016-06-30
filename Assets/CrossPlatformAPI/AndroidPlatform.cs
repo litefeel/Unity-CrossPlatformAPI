@@ -31,6 +31,16 @@ namespace litefeel
         {
             return api.CallStatic<string>("copyFromClipboard", new string[] {}); ;
         }
+        
+        public override void NativeShareImage(params string[] images)
+        {
+            api.CallStatic("nativeShareImage", new string[][] { images });
+        }
+        
+        public override void NativeShareText(string text)
+        {
+            api.CallStatic("nativeShareText", new string[] { text });
+        }
     }
 }
 //#endif

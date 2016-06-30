@@ -22,5 +22,16 @@ namespace litefeel
             Debug.Log("DummyPlatform.CopyFromClipboard");
             return "";
         }
+        
+        public override void NativeShareImage(params string[] images)
+        {
+            Debug.Log("DummyPlatform.NativeShareImage");
+        }
+        
+        public override void NativeShareText(string text)
+        {
+            Debug.Log("DummyPlatform.NativeShareText");
+        }
+        
     }
 }

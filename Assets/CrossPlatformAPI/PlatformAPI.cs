@@ -12,5 +12,8 @@ namespace litefeel
         public abstract void PasteToClipboard(string text);
 
         public abstract string CopyFromClipboard();
+        
+        public abstract void NativeShareImage(params string[] images);
+        public abstract void NativeShareText(string text);
     }
 }
