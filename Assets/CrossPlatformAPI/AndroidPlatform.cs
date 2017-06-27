@@ -13,7 +13,7 @@ namespace litefeel
 
         public AndroidPlatform()
         {
-            api = new AndroidJavaClass("litefeel.crossplatformapi.AndroidPlatform");
+            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
             api.CallStatic("init", new string[] { });
         }
 

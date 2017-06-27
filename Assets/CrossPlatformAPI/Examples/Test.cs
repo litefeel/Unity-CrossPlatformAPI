@@ -15,7 +15,6 @@ public class Test : MonoBehaviour {
         print("persistentDataPath:" + Application.persistentDataPath);
 
         StartCoroutine(MoveToPersistentPath());
-        MoveToPersistentPath();
 
         if (inputField == null)
         {
@@ -35,6 +34,7 @@ public class Test : MonoBehaviour {
         {
             File.WriteAllBytes(Application.persistentDataPath + "/abc.png", www.bytes);
             www.Dispose();
+            print("write file to " + Application.persistentDataPath + "/abc.png");
         }
     }
 
