@@ -55,7 +55,14 @@ public class Test : MonoBehaviour {
         inputField.text = text;
     }
 
-    public void NativeShare()
+    public void NativeShareText()
+    {
+        if (string.IsNullOrEmpty(inputField.text))
+            inputField.text = "this is shared text!";
+        CrossPlatformAPI.NativeShareText(inputField.text);
+    }
+
+    public void NativeShareImage()
     {
         print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
         string filename = Application.persistentDataPath + "/abc.png";
@@ -63,4 +70,13 @@ public class Test : MonoBehaviour {
         CrossPlatformAPI.NativeShareImage(filename);
     }
 
+    public void NativeShareImageWithText()
+    {
+        if (string.IsNullOrEmpty(inputField.text))
+            inputField.text = "this is shared text!";
+        print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
+        string filename = Application.persistentDataPath + "/abc.png";
+        print("share image " + filename);
+        CrossPlatformAPI.NativeShareImage(filename, inputField.text);
+    }
 }

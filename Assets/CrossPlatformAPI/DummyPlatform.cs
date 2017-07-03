@@ -23,7 +23,7 @@ namespace litefeel
             return "";
         }
         
-        public override void NativeShareImage(params string[] images)
+        public override void NativeShareImage(string image, string text = null)
         {
             Debug.Log("DummyPlatform.NativeShareImage");
         }

@@ -13,7 +13,7 @@ namespace litefeel
 
         public abstract string CopyFromClipboard();
         
-        public abstract void NativeShareImage(params string[] images);
+        public abstract void NativeShareImage(string image, string text = null);
         public abstract void NativeShareText(string text);
     }
 }

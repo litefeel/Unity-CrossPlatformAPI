@@ -14,7 +14,7 @@ namespace litefeel
         public AndroidPlatform()
         {
             api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
-            api.CallStatic("init", new string[] { });
+            api.CallStatic("init");
         }
 
         public override void SaveToAlbum(string filename)
@@ -32,9 +32,9 @@ namespace litefeel
             return api.CallStatic<string>("copyFromClipboard", new string[] {}); ;
         }
         
-        public override void NativeShareImage(params string[] images)
+        public override void NativeShareImage(string image, string text = null)
         {
-            api.CallStatic("nativeShareImage", new string[][] { images });
+            api.CallStatic("nativeShareImage", new string[] { image, text });
         }
         
         public override void NativeShareText(string text)

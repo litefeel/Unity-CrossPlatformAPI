@@ -32,7 +32,7 @@ namespace litefeel
             return _CPAPICopyFromClipboard();
         }
         
-        public override void NativeShareImage(params string[] images)
+        public override void NativeShareImage(string image, string text = null)
         {
             throw new NotImplementedException();
         }
