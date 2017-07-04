@@ -17,6 +17,12 @@ namespace litefeel
         [DllImport("__Internal")]
         private static extern string _CPAPICopyFromClipboard();
 
+        [DllImport("__Internal")]
+        private static extern void _CPAPIShareText(string text);
+
+        [DllImport("__Internal")]
+        private static extern void _CPAPIShareImage(string image, string text);
+
         public override void SaveToAlbum(string filename)
         {
             _CPAPISavaToAlbum(filename);
@@ -34,12 +40,12 @@ namespace litefeel
         
         public override void NativeShareImage(string image, string text = null)
         {
-            throw new NotImplementedException();
+            _CPAPIShareImage(image, text);
         }
         
         public override void NativeShareText(string text)
         {
-            throw new NotImplementedException();
+            _CPAPIShareText(text);
         }
     }
 }

@@ -30,6 +30,8 @@ public class Test : MonoBehaviour {
         if (www.error != null)
         {
             print("can not load file form " + filename);
+            // IOS can not move file via WWW, so move it via file api
+            File.WriteAllBytes(Application.persistentDataPath + "/abc.png", File.ReadAllBytes(filename));
         } else
         {
             File.WriteAllBytes(Application.persistentDataPath + "/abc.png", www.bytes);
