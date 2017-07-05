@@ -13,8 +13,11 @@ namespace litefeel
 
         public AndroidPlatform()
         {
+            var player = new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            var currentActivity = player.GetStatic<AndroidJavaObject>("currentActivity");
+
             api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
-            api.CallStatic("init");
+            api.CallStatic("init", new AndroidJavaObject[] { currentActivity });
         }
 
         public override void SaveToAlbum(string filename)
