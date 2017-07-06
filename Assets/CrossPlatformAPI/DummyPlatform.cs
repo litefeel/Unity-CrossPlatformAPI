@@ -7,30 +7,30 @@ namespace litefeel
     public class DummyPlatform : PlatformAPI
     {
 
-        public override void SaveToAlbum(string filename)
+        public override void SaveToAlbum(string imagePath)
         {
-            Debug.Log("DummyPlatform.SaveToAlbum filename:" + filename);
+            Debug.Log("DummyPlatform.SaveToAlbum imagePath:" + imagePath);
         }
 
-        public override void PasteToClipboard(string text)
+        public override void SetToClipboard(string text)
         {
-            Debug.Log("DummyPlatform.PasteToClipboard text:" + text);
+            Debug.Log("DummyPlatform.SetToClipboard text:" + text);
         }
 
-        public override string CopyFromClipboard()
+        public override string GetFromClipboard()
         {
-            Debug.Log("DummyPlatform.CopyFromClipboard");
+            Debug.Log("DummyPlatform.GetFromClipboard");
             return "";
         }
         
-        public override void NativeShareImage(string image, string text = null)
+        public override void ShareImage(string imagePath, string text = null)
         {
-            Debug.Log("DummyPlatform.NativeShareImage");
+            Debug.Log("DummyPlatform.ShareImage");
         }
         
-        public override void NativeShareText(string text)
+        public override void ShareText(string text)
         {
-            Debug.Log("DummyPlatform.NativeShareText");
+            Debug.Log("DummyPlatform.ShareText");
         }
         
     }

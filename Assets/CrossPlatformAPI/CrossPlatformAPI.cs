@@ -26,34 +26,34 @@ namespace litefeel
             }
         }
 
-        public static void SaveToAlbum(string filename)
+        public static void SaveToAlbum(string imagePath)
         {
             Init();
-            api.SaveToAlbum(filename);
+            api.SaveToAlbum(imagePath);
         }
 
-        public static void PasteToClipboard(string text)
+        public static void SetToClipboard(string text)
         {
             Init();
-            api.PasteToClipboard(text);
+            api.SetToClipboard(text);
         }
 
-        public static string CopyFromClipboard()
+        public static string GetFromClipboard()
         {
             Init();
-            return api.CopyFromClipboard();
+            return api.GetFromClipboard();
         }
 
-        public static void NativeShareImage(string image, string text = null)
+        public static void ShareImage(string imagePath, string text = null)
         {
             Init();
-            api.NativeShareImage(image, text);
+            api.ShareImage(imagePath, text);
         }
 
-        public static void NativeShareText(string text)
+        public static void ShareText(string text)
         {
             Init();
-            api.NativeShareText(text);
+            api.ShareText(text);
         }
 
     }

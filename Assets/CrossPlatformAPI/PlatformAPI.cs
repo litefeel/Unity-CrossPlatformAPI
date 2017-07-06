@@ -7,13 +7,13 @@ namespace litefeel
     public abstract class PlatformAPI
     {
 
-        public abstract void SaveToAlbum(string filename);
+        public abstract void SaveToAlbum(string imagePath);
         
-        public abstract void PasteToClipboard(string text);
+        public abstract void SetToClipboard(string text);
 
-        public abstract string CopyFromClipboard();
+        public abstract string GetFromClipboard();
         
-        public abstract void NativeShareImage(string image, string text = null);
-        public abstract void NativeShareText(string text);
+        public abstract void ShareImage(string imagePath, string text = null);
+        public abstract void ShareText(string text);
     }
 }

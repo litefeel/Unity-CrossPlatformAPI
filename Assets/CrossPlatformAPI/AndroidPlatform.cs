@@ -20,27 +20,27 @@ namespace litefeel
             api.CallStatic("init", new AndroidJavaObject[] { currentActivity });
         }
 
-        public override void SaveToAlbum(string filename)
+        public override void SaveToAlbum(string imagePath)
         {
-            api.CallStatic("saveToAlbum", new string[] { filename });
+            api.CallStatic("saveToAlbum", new string[] { imagePath });
         }
 
-        public override void PasteToClipboard(string text)
+        public override void SetToClipboard(string text)
         {
             api.CallStatic("pasteToClipboard", new string[] { text });
         }
 
-        public override string CopyFromClipboard()
+        public override string GetFromClipboard()
         {
             return api.CallStatic<string>("copyFromClipboard", new string[] {}); ;
         }
         
-        public override void NativeShareImage(string image, string text = null)
+        public override void ShareImage(string imagePath, string text = null)
         {
-            api.CallStatic("nativeShareImage", new string[] { image, text });
+            api.CallStatic("nativeShareImage", new string[] { imagePath, text });
         }
         
-        public override void NativeShareText(string text)
+        public override void ShareText(string text)
         {
             api.CallStatic("nativeShareText", new string[] { text });
         }

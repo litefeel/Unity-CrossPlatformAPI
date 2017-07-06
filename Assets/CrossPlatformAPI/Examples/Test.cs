@@ -46,39 +46,39 @@ public class Test : MonoBehaviour {
         CrossPlatformAPI.SaveToAlbum(filename);
     }
 
-    public void PasteToClipboard()
+    public void SetToClipboard()
     {
-        CrossPlatformAPI.PasteToClipboard(inputField.text);
+        CrossPlatformAPI.SetToClipboard(inputField.text);
     }
 
-    public void CopyFromClipboard()
+    public void GetFromClipboard()
     {
-        string text = CrossPlatformAPI.CopyFromClipboard();
+        string text = CrossPlatformAPI.GetFromClipboard();
         inputField.text = text;
     }
 
-    public void NativeShareText()
+    public void ShareText()
     {
         if (string.IsNullOrEmpty(inputField.text))
             inputField.text = "this is shared text!";
-        CrossPlatformAPI.NativeShareText(inputField.text);
+        CrossPlatformAPI.ShareText(inputField.text);
     }
 
-    public void NativeShareImage()
+    public void ShareImage()
     {
         print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
         string filename = Application.persistentDataPath + "/abc.png";
         print("share image " + filename);
-        CrossPlatformAPI.NativeShareImage(filename);
+        CrossPlatformAPI.ShareImage(filename);
     }
 
-    public void NativeShareImageWithText()
+    public void ShareImageWithText()
     {
         if (string.IsNullOrEmpty(inputField.text))
             inputField.text = "this is shared text!";
         print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
         string filename = Application.persistentDataPath + "/abc.png";
         print("share image " + filename);
-        CrossPlatformAPI.NativeShareImage(filename, inputField.text);
+        CrossPlatformAPI.ShareImage(filename, inputField.text);
     }
 }
