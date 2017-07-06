@@ -16,38 +16,20 @@ namespace litefeel.crossplatformapi
             print(Application.platform);
             print("streamingAssetsPath:" + Application.streamingAssetsPath);
             print("persistentDataPath:" + Application.persistentDataPath);
-
-            StartCoroutine(MoveToPersistentPath());
-
+            
             if (inputField == null)
             {
                 inputField = GameObject.Find("InputField").GetComponent<InputField>();
             }
-        }
 
-        // Update is called once per frame
-        IEnumerator MoveToPersistentPath()
-        {
-            string filename = Application.streamingAssetsPath + "/abc.png";
-            WWW www = new WWW(filename);
-            yield return www;
-            if (www.error != null)
-            {
-                print("can not load file form " + filename);
-                // IOS can not move file via WWW, so move it via file api
-                File.WriteAllBytes(Application.persistentDataPath + "/abc.png", File.ReadAllBytes(filename));
-            }
-            else
-            {
-                File.WriteAllBytes(Application.persistentDataPath + "/abc.png", www.bytes);
-                www.Dispose();
-                print("write file to " + Application.persistentDataPath + "/abc.png");
-            }
+#if !UNITY_EDITOR
+            Application.CaptureScreenshot("screenshot.png");
+#endif
         }
-
+        
         public void SavaToAlbum()
         {
-            string filename = Application.persistentDataPath + "/abc.png";
+            string filename = Application.persistentDataPath + "/screenshot.png";
             CrossPlatformAPI.SaveToAlbum(filename);
         }
 
@@ -72,7 +54,7 @@ namespace litefeel.crossplatformapi
         public void ShareImage()
         {
             print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
-            string filename = Application.persistentDataPath + "/abc.png";
+            string filename = Application.persistentDataPath + "/screenshot.png";
             print("share image " + filename);
             CrossPlatformAPI.ShareImage(filename);
         }
@@ -82,7 +64,7 @@ namespace litefeel.crossplatformapi
             if (string.IsNullOrEmpty(inputField.text))
                 inputField.text = "this is shared text!";
             print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
-            string filename = Application.persistentDataPath + "/abc.png";
+            string filename = Application.persistentDataPath + "/screenshot.png";
             print("share image " + filename);
             CrossPlatformAPI.ShareImage(filename, inputField.text);
         }

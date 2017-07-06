@@ -1,3 +1,5 @@
+#if UNITY_IOS
+
 using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
@@ -49,3 +51,4 @@ namespace litefeel.crossplatformapi
         }
     }
 }
+#endif

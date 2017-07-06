@@ -12,18 +12,13 @@ namespace litefeel.crossplatformapi
         {
             if (api != null) return;
 
-            switch (Application.platform)
-            {
-                case RuntimePlatform.IPhonePlayer:
-                    api = new IOSPlatform();
-                    break;
-                case RuntimePlatform.Android:
-                    api = new AndroidPlatform();
-                    break;
-                default:
-                    api = new DummyPlatform();
-                    break;
-            }
+#if UNITY_ANDROID && !UNITY_EDITOR
+            api = new AndroidPlatform();
+#elif UNITY_IOS && !UNITY_EDITOR
+            api = new IOSPlatform();
+#else
+            api = new DummyPlatform();
+#endif
         }
 
         public static void SaveToAlbum(string imagePath)

@@ -1,4 +1,4 @@
-//#if UNITY_ANDROID
+#if UNITY_ANDROID
 
 using UnityEngine;
 using System.Collections;
@@ -46,4 +46,4 @@ namespace litefeel.crossplatformapi
         }
     }
 }
-//#endif
+#endif
