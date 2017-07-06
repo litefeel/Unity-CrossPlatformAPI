@@ -1,7 +1,7 @@
 Cross Platform API
 ==================
 
-A unity plugin that provides a unified cross-platform API
+A unity plugin that provides a unified cross-platform API for Android/iOS
 
 
 
