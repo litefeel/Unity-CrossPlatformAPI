@@ -1,7 +1,7 @@
 using UnityEngine;
 using System.Collections;
 
-namespace litefeel
+namespace litefeel.crossplatformapi
 {
     public static class CrossPlatformAPI
     {

@@ -2,7 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System;
 
-namespace litefeel
+namespace litefeel.crossplatformapi
 {
     public class DummyPlatform : PlatformAPI
     {

@@ -3,7 +3,7 @@ using System.Collections;
 using System.Runtime.InteropServices;
 using System;
 
-namespace litefeel
+namespace litefeel.crossplatformapi
 {
     public class IOSPlatform : PlatformAPI
     {

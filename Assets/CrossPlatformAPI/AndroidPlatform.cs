@@ -5,7 +5,7 @@ using System.Collections;
 using System;
 using System.Runtime.InteropServices;
 
-namespace litefeel
+namespace litefeel.crossplatformapi
 {
     public class AndroidPlatform : PlatformAPI
     {
