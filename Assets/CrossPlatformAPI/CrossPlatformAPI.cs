@@ -1,54 +1,39 @@
 using UnityEngine;
 using System.Collections;
+using System;
 
 namespace litefeel.crossplatformapi
 {
     public static class CrossPlatformAPI
     {
-
-        private static PlatformAPI api = null;
-
-        private static void Init()
-        {
-            if (api != null) return;
-
-#if UNITY_ANDROID && !UNITY_EDITOR
-            api = new AndroidPlatform();
-#elif UNITY_IOS && !UNITY_EDITOR
-            api = new IOSPlatform();
-#else
-            api = new DummyPlatform();
-#endif
-        }
-
+        [Obsolete("Method SaveToAlbum has been deprecated.Please use Album.SaveImage instead.")]
         public static void SaveToAlbum(string imagePath)
         {
-            Init();
-            api.SaveToAlbum(imagePath);
+            Album.SaveImage(imagePath);
         }
 
+        [Obsolete("Method SetToClipboard has been deprecated.Please use Clipboard.SetText instead.")]
         public static void SetToClipboard(string text)
         {
-            Init();
-            api.SetToClipboard(text);
+            Clipboard.SetText(text);
         }
 
+        [Obsolete("Method GetFromClipboard has been deprecated.Please use Clipboard.GetText instead.")]
         public static string GetFromClipboard()
         {
-            Init();
-            return api.GetFromClipboard();
+            return Clipboard.GetText();
         }
 
+        [Obsolete("Method ShareImage has been deprecated.Please use Share.ShareImage instead.")]
         public static void ShareImage(string imagePath, string text = null)
         {
-            Init();
-            api.ShareImage(imagePath, text);
+            Share.ShareImage(imagePath, text);
         }
 
+        [Obsolete("Method ShareText has been deprecated.Please use Share.ShareText instead.")]
         public static void ShareText(string text)
         {
-            Init();
-            api.ShareText(text);
+            Share.ShareText(text);
         }
 
     }
