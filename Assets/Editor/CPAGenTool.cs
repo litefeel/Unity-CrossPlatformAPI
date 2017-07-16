@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using litefeel.crossplatformapi;
+using System.Text.RegularExpressions;
 
 public class CPAGenTool {
 
@@ -44,9 +45,9 @@ using System.Collections;
 
 namespace litefeel.crossplatformapi
 {{
+{1}
     public class {0}
     {{
-
         private static {0}Api api = null;
 
         private static void Init()
@@ -61,13 +62,13 @@ namespace litefeel.crossplatformapi
             api = new {0}Api.Default();
 #endif
         }}
-{1}
+{2}
     }}
 }}
 ";
 
     private static string TopClassMethod = @"
-        public static {0} {1}({2})
+{5}        public static {0} {1}({2})
         {{
             Init();
             {4}api.{1}({3});
@@ -99,12 +100,13 @@ namespace litefeel.crossplatformapi
                 defParams.Length -= 2;
                 callParams.Length -= 2;
             }
-            methodBuilder.AppendFormat(TopClassMethod, Type2Str(method.ReturnType), method.Name, defParams.ToString(), callParams.ToString(), returns);
+            var methodComment = GetMethodComment(apiType, method);
+            methodBuilder.AppendFormat(TopClassMethod, Type2Str(method.ReturnType), method.Name, defParams.ToString(), callParams.ToString(), returns, methodComment);
         }
 
 
         var clsName = apiType.Name.Substring(0, apiType.Name.Length - 3);
-        var content = string.Format(TopClassFormat, clsName, methodBuilder);
+        var content = string.Format(TopClassFormat, clsName, GetClassComment(apiType), methodBuilder);
 
         var path = string.Format("{0}/{1}.cs", BasePath, clsName);
         File.WriteAllText(path, content);
@@ -165,6 +167,47 @@ namespace litefeel.crossplatformapi
 
         var path = string.Format("{0}/Implementations/{1}/{1}Api.Default.cs", BasePath, clsName);
         File.WriteAllText(path, content);
+    }
+
+    private static string GetClassComment(Type apiType)
+    {
+        var clsName = apiType.Name.Substring(0, apiType.Name.Length - 3);
+        var path = string.Format("{0}/Implementations/{1}/{1}Api.cs", BasePath, clsName);
+        var content = File.ReadAllText(path);
+
+        string expr = "namespace litefeel.crossplatformapi\\s*{{\\s*^(.*?)\r?\n?^\\s*public abstract partial class {0}Api";
+        expr = string.Format(expr, clsName);
+        Debug.Log(expr);
+        var match = Regex.Match(content, expr, RegexOptions.Multiline|RegexOptions.Singleline);
+        if (match.Success)
+            Debug.Log(match.Groups[1].Value);
+        return match.Success ? match.Groups[1].Value : "";
+    }
+
+    /// <summary>
+    /// Share image and optional text messages.
+    /// </summary>
+    /// <param name="imagePath">The full path of image to be shared.</param>
+    /// <param name="text">The text message to be shared.</param>
+    //public abstract void ShareImage(string imagePath, string text = null);
+    private static string GetMethodComment(Type apiType, MethodInfo method)
+    {
+        var clsName = apiType.Name.Substring(0, apiType.Name.Length - 3);
+        var path = string.Format("{0}/Implementations/{1}/{1}Api.cs", BasePath, clsName);
+        var content = File.ReadAllText(path);
+
+        var expr = new StringBuilder("((^\\s*?//[^\n]*?$\r?\n)+)")
+            .Append("(^\\s*?\\[[^\\[]*][^\n]*\n)*") // Attribute
+            .Append("^\\s*public abstract \\S+ ").Append(method.Name)
+            .Append("\\(.*?");
+        foreach (var param in method.GetParameters())
+            expr.Append(param.Name).Append(".*?");
+        expr.Append("\\)");
+        Debug.Log(expr.ToString());
+        var match = Regex.Match(content, expr.ToString(), RegexOptions.Multiline | RegexOptions.Singleline);
+        if (match.Success)
+            Debug.Log(match.Groups[1].Value);
+        return match.Success ? match.Groups[1].Value : "";
     }
 
     private static string Type2Str(Type type)
