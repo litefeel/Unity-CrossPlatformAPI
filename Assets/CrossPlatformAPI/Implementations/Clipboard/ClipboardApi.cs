@@ -8,6 +8,7 @@ namespace litefeel.crossplatformapi
 
         public abstract void SetText(string text);
 
+        [NotNull]
         public abstract string GetText();
     }
 }

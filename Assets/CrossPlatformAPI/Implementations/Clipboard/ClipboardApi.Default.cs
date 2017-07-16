@@ -16,7 +16,7 @@ namespace litefeel.crossplatformapi
             public override string GetText()
             {
                 CSharpUtil.PrintInvokeMethod();
-                return null;
+                return "";
             }
 
         }
