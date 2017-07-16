@@ -30,25 +30,24 @@ namespace litefeel.crossplatformapi
         public void SavaToAlbum()
         {
             string filename = Application.persistentDataPath + "/screenshot.png";
-            CrossPlatformAPI.SaveToAlbum(filename);
+            Album.SaveImage(filename);
         }
 
         public void SetToClipboard()
         {
-            CrossPlatformAPI.SetToClipboard(inputField.text);
+            Clipboard.SetText(inputField.text);
         }
 
         public void GetFromClipboard()
         {
-            string text = CrossPlatformAPI.GetFromClipboard();
-            inputField.text = text;
+            inputField.text = Clipboard.GetText();
         }
 
         public void ShareText()
         {
             if (string.IsNullOrEmpty(inputField.text))
                 inputField.text = "this is shared text!";
-            CrossPlatformAPI.ShareText(inputField.text);
+            Share.ShareText(inputField.text);
         }
 
         public void ShareImage()
@@ -56,7 +55,7 @@ namespace litefeel.crossplatformapi
             print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
             string filename = Application.persistentDataPath + "/screenshot.png";
             print("share image " + filename);
-            CrossPlatformAPI.ShareImage(filename);
+            Share.ShareImage(filename);
         }
 
         public void ShareImageWithText()
@@ -66,7 +65,7 @@ namespace litefeel.crossplatformapi
             print("Application.streamingAssetsPath " + Application.streamingAssetsPath);
             string filename = Application.persistentDataPath + "/screenshot.png";
             print("share image " + filename);
-            CrossPlatformAPI.ShareImage(filename, inputField.text);
+            Share.ShareImage(filename, inputField.text);
         }
     }
 }
