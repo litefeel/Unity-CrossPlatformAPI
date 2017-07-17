@@ -3,7 +3,7 @@ namespace litefeel.crossplatformapi
 {
     public abstract partial class ClipboardApi
     {
-#if !UNITY_IOS && !UNITY_ANDROID
+#if UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
         internal class Default : ClipboardApi
         {
 
