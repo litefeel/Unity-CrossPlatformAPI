@@ -1,5 +1,4 @@
 using UnityEngine;
-using System.Collections;
 using UnityEditor;
 using System.Reflection;
 using System;
@@ -45,16 +44,16 @@ using System.Collections;
 
 namespace litefeel.crossplatformapi
 {{
-{1}
-    public class {0}
+{1}    public class {0}
     {{
         private static {0}Api api = null;
 
         private static void Init()
         {{
             if (api != null) return;
-
+            CrossPlatformAPICallback.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
+            AndroidUtil.InitCPAPI();
             api = new Android{0}Imp();
 #elif UNITY_IOS && !UNITY_EDITOR
             api = new Ios{0}Imp();
@@ -175,10 +174,12 @@ namespace litefeel.crossplatformapi
         var path = string.Format("{0}/Implementations/{1}/{1}Api.cs", BasePath, clsName);
         var content = File.ReadAllText(path);
 
-        string expr = "namespace litefeel.crossplatformapi\\s*{{\\s*^(.*?)\r?\n?^\\s*public abstract partial class {0}Api";
-        expr = string.Format(expr, clsName);
-        Debug.Log(expr);
-        var match = Regex.Match(content, expr, RegexOptions.Multiline|RegexOptions.Singleline);
+        var expr = new StringBuilder("((^\\s*?//[^\n]*?$\r?\n)+)")
+            .Append("(^\\s*?\\[[^\\[]*][^\n]*\n)*") // Attribute
+            .Append("^\\s*public abstract partial class ").Append(apiType.Name);
+        
+        Debug.Log(expr.ToString());
+        var match = Regex.Match(content, expr.ToString(), RegexOptions.Multiline|RegexOptions.Singleline);
         if (match.Success)
             Debug.Log(match.Groups[1].Value);
         return match.Success ? match.Groups[1].Value : "";
@@ -210,17 +211,21 @@ namespace litefeel.crossplatformapi
         return match.Success ? match.Groups[1].Value : "";
     }
 
+    private static Dictionary<Type, string> typeStrMap = new Dictionary<Type, string>
+    {
+        { typeof(void),     "void" },
+        { typeof(bool),     "bool" },
+        { typeof(int),      "int" },
+        { typeof(float),    "float" },
+        { typeof(string),   "string" }
+    };
+    
+
     private static string Type2Str(Type type)
     {
-        if (type == typeof(void))
-            return "void";
-        if (type.IsPrimitive)
-        if (type == typeof(int))
-            return "int";
-        if (type == typeof(float))
-            return "float";
-        if (type == typeof(string))
-            return "string";
+        string str;
+        if (typeStrMap.TryGetValue(type, out str))
+            return str;
         if (type.IsPrimitive)
             return type.Name;
         return type.FullName;
