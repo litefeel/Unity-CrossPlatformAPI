@@ -67,5 +67,31 @@ namespace litefeel.crossplatformapi
             print("share image " + filename);
             Share.ShareImage(filename, inputField.text);
         }
+
+        public void ShowAlert()
+        {
+            if (string.IsNullOrEmpty(inputField.text))
+                inputField.text = "this is alert text!";
+            AlertParams param = new AlertParams()
+            {
+                title = "this is title",
+                message = inputField.text,
+                yesButton = "Yes",
+                noButton = "No",
+                neutralButton = "Neutral"
+            };
+            param.onButtonPress = (AlertButton button) =>
+            {
+                print("the alert button press " + button.ToString());
+            };
+            UI.ShowAlert(param);
+        }
+
+        public void ShowToast()
+        {
+            if (string.IsNullOrEmpty(inputField.text))
+                inputField.text = "this is toast text!";
+            UI.ShowToast(inputField.text, false);
+        }
     }
 }
