@@ -4,6 +4,7 @@ using System.Collections;
 
 namespace litefeel.crossplatformapi
 {
+
     /// <summary>
     ///  Provides cross-platform interface to access clipboard.
     /// </summary>
@@ -14,8 +15,9 @@ namespace litefeel.crossplatformapi
         private static void Init()
         {
             if (api != null) return;
-
+            CrossPlatformAPICallback.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
+            AndroidUtil.InitCPAPI();
             api = new AndroidClipboardImp();
 #elif UNITY_IOS && !UNITY_EDITOR
             api = new IosClipboardImp();

@@ -15,8 +15,9 @@ namespace litefeel.crossplatformapi
         private static void Init()
         {
             if (api != null) return;
-
+            CrossPlatformAPICallback.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
+            AndroidUtil.InitCPAPI();
             api = new AndroidShareImp();
 #elif UNITY_IOS && !UNITY_EDITOR
             api = new IosShareImp();
