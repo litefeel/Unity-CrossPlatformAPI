@@ -5,8 +5,13 @@ using System.Diagnostics;
 
 namespace litefeel.crossplatformapi
 {
-    public class CSharpUtil : MonoBehaviour
+    public class CSharpUtil
     {
+        private static int n = 1;
+        public static int GetUniqueInt()
+        {
+            return n++;
+        }
 
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static string GetCurrentMethod(int index = 1)
