@@ -26,6 +26,11 @@ namespace litefeel.crossplatformapi
 #endif
         }
 
+
+        /// <summary>
+        /// Show an native alert dialog.
+        /// </summary>
+        /// <param name="param">must have yesButton, ignore neutralButton when have notnoButton.</param>
         public static void ShowAlert(litefeel.crossplatformapi.AlertParams param)
         {
             Init();

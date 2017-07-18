@@ -16,15 +16,17 @@ namespace litefeel.crossplatformapi
         
         public override void ShowAlert(AlertParams param)
         {
-            base.ShowAlert(param);
+            AlertParams nowparam;
+            if (!CheckShowAlert(param, out nowparam))
+                return;
             using (var jparam = new AndroidJavaObject("com.litefeel.crossplatformapi.android.ui.AlertParams"))
             {
-                jparam.Set("title", param.title);
-                jparam.Set("message", param.message);
-                jparam.Set("yesButton", param.yesButton);
-                jparam.Set("noButton", param.noButton);
-                jparam.Set("neutralButton", param.neutralButton);
-                jparam.Set("alertId", param.alertId);
+                jparam.Set("title", nowparam.title);
+                jparam.Set("message", nowparam.message);
+                jparam.Set("yesButton", nowparam.yesButton);
+                jparam.Set("noButton", nowparam.noButton);
+                jparam.Set("neutralButton", nowparam.neutralButton);
+                jparam.Set("alertId", nowparam.alertId);
                 api.CallStatic("showAlert", jparam);
             }
         }

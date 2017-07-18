@@ -9,7 +9,7 @@ namespace litefeel.crossplatformapi
         No = 2,
         Neutral = 3,
     }
-    public class AlertParams
+    public struct AlertParams
     {
         internal int alertId;
         public string title;

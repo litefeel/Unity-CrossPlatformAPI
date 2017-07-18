@@ -50,11 +50,23 @@ namespace litefeel.crossplatformapi
         /// <summary>
         /// Show an native alert dialog.
         /// </summary>
-        /// <param name="param"></param>
-        public virtual void ShowAlert(AlertParams param)
+        /// <param name="param">must have yesButton, ignore neutralButton when have notnoButton.</param>
+        public abstract void ShowAlert(AlertParams param);
+
+        internal bool CheckShowAlert(AlertParams param, out AlertParams outparam)
         {
-            param.alertId = CSharpUtil.GetUniqueInt();
-            map.Add(param.alertId, param);
+            outparam = param;
+            if (outparam.yesButton == null)
+            {
+                Debug.LogError("must set yesButton for UI.ShowAlert");
+                return false;
+            }
+            if (outparam.noButton == null)
+                outparam.neutralButton = null;
+
+            outparam.alertId = CSharpUtil.GetUniqueInt();
+            map.Add(outparam.alertId, outparam);
+            return true;
         }
 
         /// <summary>

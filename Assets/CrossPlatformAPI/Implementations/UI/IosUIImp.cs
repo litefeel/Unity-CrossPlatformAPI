@@ -27,14 +27,16 @@ namespace litefeel.crossplatformapi
 
         public override void ShowAlert(AlertParams param)
         {
-            base.ShowAlert(param);
+            AlertParams nowparam;
+            if (!CheckShowAlert(param, out nowparam))
+                return;
             _AlertParams data = new _AlertParams();
-            data.alertId = param.alertId;
-            data.title = param.title;
-            data.message = param.message;
-            data.yesButton = param.yesButton;
-            data.noButton = param.noButton;
-            data.neutralButton = param.neutralButton;
+            data.alertId = nowparam.alertId;
+            data.title = nowparam.title;
+            data.message = nowparam.message;
+            data.yesButton = nowparam.yesButton;
+            data.noButton = nowparam.noButton;
+            data.neutralButton = nowparam.neutralButton;
             _CPAPI_UI_ShowAlert(data);
         }
 
