@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace litefeel.crossplatformapi
 {
-    public class IosClipboardImp : ClipboardApi
+    public class ClipboardImplIos : ClipboardApi
     {
 
         [DllImport("__Internal")]

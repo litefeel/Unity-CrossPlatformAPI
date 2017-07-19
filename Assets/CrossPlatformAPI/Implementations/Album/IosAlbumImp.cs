@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace litefeel.crossplatformapi
 {
-    public class IosAlbumImp : AlbumApi
+    public class AlbumImplIos : AlbumApi
     {
 
         [DllImport("__Internal")]

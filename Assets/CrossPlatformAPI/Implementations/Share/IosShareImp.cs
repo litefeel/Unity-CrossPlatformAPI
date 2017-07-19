@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace litefeel.crossplatformapi
 {
 
-    public class IosShareImp : ShareApi
+    public class ShareImplIos : ShareApi
     {
 
         [DllImport("__Internal")]

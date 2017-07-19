@@ -4,12 +4,12 @@ using System;
 
 namespace litefeel.crossplatformapi
 {
-    public class AndroidAlbumImp : AlbumApi
+    public class AlbumImplAndroid : AlbumApi
     {
 
         private AndroidJavaClass api = null;
 
-        internal AndroidAlbumImp()
+        internal AlbumImplAndroid()
         {
             api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
             api.CallStatic("init", new AndroidJavaObject[] { AndroidUtil.GetCurrentActivity() });

@@ -3,12 +3,12 @@ using System.Collections;
 
 namespace litefeel.crossplatformapi
 {
-    public class AndroidShareImp : ShareApi
+    public class ShareImplAndroid : ShareApi
     {
 
         private AndroidJavaClass api = null;
 
-        internal AndroidShareImp()
+        internal ShareImplAndroid()
         {
             api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
             api.CallStatic("init", new AndroidJavaObject[] { AndroidUtil.GetCurrentActivity() });

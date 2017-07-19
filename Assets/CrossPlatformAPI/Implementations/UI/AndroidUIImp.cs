@@ -4,12 +4,12 @@ using System;
 
 namespace litefeel.crossplatformapi
 {
-    public class AndroidUIImp : UIApi
+    public class UIImplAndroid : UIApi
     {
 
         private AndroidJavaClass api = null;
 
-        internal AndroidUIImp()
+        internal UIImplAndroid()
         {
             api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.ui.UI");
         }
