@@ -7,7 +7,7 @@ namespace litefeel.crossplatformapi
         internal class Default : UIApi
         {
 
-            public override void ShowAlert(litefeel.crossplatformapi.AlertParams param)
+            public override void ShowAlert(AlertParams param)
             {
                 CSharpUtil.PrintInvokeMethod();
                 

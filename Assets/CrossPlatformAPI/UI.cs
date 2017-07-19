@@ -4,7 +4,6 @@ using System.Collections;
 
 namespace litefeel.crossplatformapi
 {
-
     /// <summary>
     /// Provides some interface for ui.
     /// </summary>
@@ -31,7 +30,7 @@ namespace litefeel.crossplatformapi
         /// Show an native alert dialog.
         /// </summary>
         /// <param name="param">must have yesButton, ignore neutralButton when have notnoButton.</param>
-        public static void ShowAlert(litefeel.crossplatformapi.AlertParams param)
+        public static void ShowAlert(AlertParams param)
         {
             Init();
             api.ShowAlert(param);
