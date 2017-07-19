@@ -228,7 +228,10 @@ namespace litefeel.crossplatformapi
             return str;
         if (type.IsPrimitive)
             return type.Name;
-        return type.FullName;
+        string name = type.FullName;
+        if (name.StartsWith(NAMESPACE))
+            name = name.Substring(NAMESPACE.Length + 1);
+        return name;
     }
 
     private static string DefaultValue2Str(object value)
