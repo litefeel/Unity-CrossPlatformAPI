@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CPA_UI : NSObject<UIAlertViewDelegate>
+@interface CPA_UIAlert : NSObject<UIAlertViewDelegate>
 {
     @private
     int alertId;
@@ -24,6 +24,15 @@ struct _CPA_AlertParams {
     char* neutralButton;
 };
 
+@end
+
+@interface CPA_UIToast : UIView
+
+@property (strong, nonatomic) NSString *text;
+
++ (void)showToastInParentView: (UIView*) parentView withText:(NSString*) text withDuration:(float)duration;
+
+@end
 
 #ifdef __cplusplus
 extern "C" {
@@ -34,9 +43,6 @@ extern "C" {
     void _CPAPI_UI_ShowToast(const char* message, int longTimeForDisplay);
 
     
-    
 #ifdef __cplusplus
 }
 #endif
-
-@end
