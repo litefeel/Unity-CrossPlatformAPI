@@ -11,6 +11,8 @@ A unity plugin that provides a unified cross-platform API for Android/iOS
 - get/set text from clipboard
 - share text
 - share image & text
+- show alert
+- show toast
 - more coming soon
 
 

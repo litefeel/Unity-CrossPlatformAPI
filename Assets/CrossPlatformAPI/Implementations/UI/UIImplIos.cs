@@ -23,7 +23,7 @@ namespace litefeel.crossplatformapi
         private static extern void _CPAPI_UI_ShowAlert(_AlertParams text);
 
         [DllImport("__Internal")]
-        private static extern void _CPAPI_UI_ShowToast(string imagePath, bool longTimeForDisplay);
+        private static extern void _CPAPI_UI_ShowToast(string imagePath, int isLongTimeForDisplay);
 
         public override void ShowAlert(AlertParams param)
         {
@@ -42,7 +42,7 @@ namespace litefeel.crossplatformapi
 
         public override void ShowToast(string message, bool longTimeForDisplay)
         {
-            _CPAPI_UI_ShowToast(message, longTimeForDisplay);
+            _CPAPI_UI_ShowToast(message, longTimeForDisplay ? 1 : 0);
         }
     }
 
