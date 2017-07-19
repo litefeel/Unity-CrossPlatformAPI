@@ -173,7 +173,7 @@ namespace litefeel.crossplatformapi
 
         var expr = new StringBuilder("((^\\s*?//[^\n]*?$\r?\n)+)")
             .Append("(^\\s*?\\[[^\\[]*][^\n]*\n)*") // Attribute
-            .Append("^\\s*public abstract partial class ").Append(apiType.Name);
+            .Append("^\\s*public abstract class ").Append(apiType.Name);
         
         Debug.Log(expr.ToString());
         var match = Regex.Match(content, expr.ToString(), RegexOptions.Multiline|RegexOptions.Singleline);
