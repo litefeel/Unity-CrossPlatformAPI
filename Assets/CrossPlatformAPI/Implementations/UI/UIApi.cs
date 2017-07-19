@@ -5,9 +5,6 @@ using System;
 
 namespace litefeel.crossplatformapi
 {
-
-    public delegate void OnAlertComplate(AlertButton button);
-
     /// <summary>
     /// Provides some interface for ui.
     /// </summary>

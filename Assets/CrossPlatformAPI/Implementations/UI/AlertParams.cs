@@ -3,6 +3,9 @@ using System.Collections;
 
 namespace litefeel.crossplatformapi
 {
+
+    public delegate void OnAlertComplate(AlertButton button);
+
     public enum AlertButton
     {
         Yes = 1,
