@@ -54,11 +54,11 @@ namespace litefeel.crossplatformapi
             CrossPlatformAPICallback.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
             AndroidUtil.InitCPAPI();
-            api = new Android{0}Imp();
+            api = new {0}ImplAndroid();
 #elif UNITY_IOS && !UNITY_EDITOR
-            api = new Ios{0}Imp();
+            api = new {0}ImplIos();
 #else
-            api = new {0}Api.Default();
+            api = new {0}ImplDummy();
 #endif
         }}
 {2}
@@ -115,24 +115,21 @@ namespace litefeel.crossplatformapi
     private static string DefaultClassFormat = @"
 namespace litefeel.crossplatformapi
 {{
-    public abstract partial class {0}Api
-    {{
 #if UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
-        internal class Default : {0}Api
-        {{
+    public class {0}ImplDummy : {0}Api
+    {{
 {1}
-        }}
-#endif
     }}
+#endif
 }}
 ";
 
     private static string DefaultClassMethod = @"
-            public override {0} {1}({2})
-            {{
-                CSharpUtil.PrintInvokeMethod();
-                {3}
-            }}
+        public override {0} {1}({2})
+        {{
+            CSharpUtil.PrintInvokeMethod();
+            {3}
+        }}
 ";
 
     private static void GenDefaultClass(Type apiType)
@@ -164,7 +161,7 @@ namespace litefeel.crossplatformapi
         var clsName = apiType.Name.Substring(0, apiType.Name.Length - 3);
         var content = string.Format(DefaultClassFormat, clsName, methodBuilder);
 
-        var path = string.Format("{0}/Implementations/{1}/{1}Api.Default.cs", BasePath, clsName);
+        var path = string.Format("{0}/Implementations/{1}/{1}ImplDummy.cs", BasePath, clsName);
         File.WriteAllText(path, content);
     }
 
