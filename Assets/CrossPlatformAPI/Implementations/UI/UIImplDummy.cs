@@ -11,6 +11,12 @@ namespace litefeel.crossplatformapi
             
         }
 
+        public override void ShowAlert(string title, string message, string yesButton, string noButton = null, OnAlertComplate onButtonPress = null)
+        {
+            CSharpUtil.PrintInvokeMethod();
+            
+        }
+
         public override void ShowToast(string message, bool longTimeForDisplay)
         {
             CSharpUtil.PrintInvokeMethod();

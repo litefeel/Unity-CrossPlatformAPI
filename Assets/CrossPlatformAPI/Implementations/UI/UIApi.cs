@@ -50,6 +50,25 @@ namespace litefeel.crossplatformapi
         /// <param name="param">must have yesButton, ignore neutralButton when have notnoButton.</param>
         public abstract void ShowAlert(AlertParams param);
 
+        /// <summary>
+        /// Show an native alert dialog.
+        /// </summary>
+        /// <param name="title">The title of alert dialog.</param>
+        /// <param name="message">The message of alert dialog.</param>
+        /// <param name="yesButton">The yes button of alert dialog.</param>
+        /// <param name="noButton">The no button of alert dialog.</param>
+        /// <param name="onButtonPress">The callback delegate when press any button.</param>
+        public virtual void ShowAlert(string title, string message, string yesButton, string noButton = null, OnAlertComplate onButtonPress = null)
+        {
+            AlertParams param = new AlertParams();
+            param.title = title;
+            param.message = message;
+            param.yesButton = yesButton;
+            param.noButton = noButton;
+            param.onButtonPress = onButtonPress;
+            ShowAlert(param);
+        }
+
         internal bool CheckShowAlert(AlertParams param, out AlertParams outparam)
         {
             outparam = param;
