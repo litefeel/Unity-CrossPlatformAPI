@@ -8,7 +8,7 @@ namespace litefeel.crossplatformapi
     /// Provides cross-platform interface to various sharing services such as posting content to social media sites,
     /// sending items via email or SMS, and more.
     /// </summary>
-    public abstract partial class ShareApi
+    public abstract class ShareApi
     {
 
         /// <summary>

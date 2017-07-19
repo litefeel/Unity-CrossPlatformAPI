@@ -8,7 +8,7 @@ namespace litefeel.crossplatformapi
     /// <summary>
     /// Provides some interface for ui.
     /// </summary>
-    public abstract partial class UIApi
+    public abstract class UIApi
     {
         private static Dictionary<int, AlertParams> map = new Dictionary<int, AlertParams>();
 

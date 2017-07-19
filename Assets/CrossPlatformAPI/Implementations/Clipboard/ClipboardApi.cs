@@ -7,7 +7,7 @@ namespace litefeel.crossplatformapi
     /// <summary>
     ///  Provides cross-platform interface to access clipboard.
     /// </summary>
-    public abstract partial class ClipboardApi
+    public abstract class ClipboardApi
     {
 
         /// <summary>

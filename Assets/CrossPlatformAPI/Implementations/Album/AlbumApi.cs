@@ -6,7 +6,7 @@ namespace litefeel.crossplatformapi
     /// <summary>
     /// Provides cross-platform interface to access album.
     /// </summary>
-    public abstract partial class AlbumApi
+    public abstract class AlbumApi
     {
 
         /// <summary>
