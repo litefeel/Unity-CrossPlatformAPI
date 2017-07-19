@@ -17,11 +17,11 @@ namespace litefeel.crossplatformapi
             CrossPlatformAPICallback.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
             AndroidUtil.InitCPAPI();
-            api = new AndroidUIImp();
+            api = new UIImplAndroid();
 #elif UNITY_IOS && !UNITY_EDITOR
-            api = new IosUIImp();
+            api = new UIImplIos();
 #else
-            api = new UIApi.Default();
+            api = new UIImplDummy();
 #endif
         }
 

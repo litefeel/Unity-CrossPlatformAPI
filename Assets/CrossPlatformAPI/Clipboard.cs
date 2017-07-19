@@ -18,11 +18,11 @@ namespace litefeel.crossplatformapi
             CrossPlatformAPICallback.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
             AndroidUtil.InitCPAPI();
-            api = new AndroidClipboardImp();
+            api = new ClipboardImplAndroid();
 #elif UNITY_IOS && !UNITY_EDITOR
-            api = new IosClipboardImp();
+            api = new ClipboardImplIos();
 #else
-            api = new ClipboardApi.Default();
+            api = new ClipboardImplDummy();
 #endif
         }
 
