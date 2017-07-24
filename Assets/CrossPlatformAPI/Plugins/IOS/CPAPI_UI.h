@@ -1,7 +1,7 @@
 #import <Foundation/Foundation.h>
 
 
-@interface CPA_UIAlert : NSObject<UIAlertViewDelegate>
+@interface CPAPI_UIAlert : NSObject<UIAlertViewDelegate>
 {
     @private
     int alertId;
@@ -15,7 +15,7 @@
 #define CPAPI_ALERTBUTTION_Neutral  3
 
 
-struct _CPA_AlertParams {
+struct _CPAPI_AlertParams {
     int alertId;
     char* title;
     char* message;

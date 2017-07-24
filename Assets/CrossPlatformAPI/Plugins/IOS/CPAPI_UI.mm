@@ -1,10 +1,10 @@
-#import "CPA_UI.h"
-#import "CPA_Common.h"
+#import "CPAPI_UI.h"
+#import "CPAPI_Common.h"
 
 
 
 
-@implementation CPA_UIAlert
+@implementation CPAPI_UIAlert
 
 
 // Called when a button is clicked. The view will be automatically dismissed after this call returns
@@ -30,7 +30,7 @@
     _CPAPISendMessage("OnUI_AlertCb", [str UTF8String]);
 }
 
--(void) showAlert: (struct _CPA_AlertParams) params
+-(void) showAlert: (struct _CPAPI_AlertParams) params
 {
     alertId = params.alertId;
     
@@ -62,10 +62,10 @@
 @end
 
 
-@interface CPA_UIToast ()
+@interface CPAPI_UIToast ()
 @property (strong, nonatomic) UILabel *label;
 @end
-@implementation CPA_UIToast
+@implementation CPAPI_UIToast
 
 //float const ToastHeight = 50.0f;
 //float const ToastGap = 10.0f;
@@ -125,7 +125,7 @@
                             toastFrame.size.height);
     
     
-    CPA_UIToast *toast = [[CPA_UIToast alloc] initWithFrame:toastFrame];
+    CPAPI_UIToast *toast = [[CPAPI_UIToast alloc] initWithFrame:toastFrame];
     toast.backgroundColor = [UIColor darkGrayColor];
     toast.alpha = 0.0f;
     toast.layer.cornerRadius = 20.0f;
@@ -168,9 +168,9 @@
 
 
 # pragma mark - C API
-void _CPAPI_UI_ShowAlert(struct _CPA_AlertParams params)
+void _CPAPI_UI_ShowAlert(struct _CPAPI_AlertParams params)
 {
-    CPA_UIAlert *instance = [[CPA_UIAlert alloc] init];
+    CPAPI_UIAlert *instance = [[CPAPI_UIAlert alloc] init];
     [instance showAlert:params];
 }
 
@@ -179,7 +179,7 @@ void _CPAPI_UI_ShowToast(const char* message, int longTimeForDisplay)
     UIView *rootView = [UIApplication sharedApplication].keyWindow.rootViewController.view;
     NSString *nsmessage = _CPAPICreateNSString(message);
     float duration = longTimeForDisplay ? 3.5 : 2;
-    [CPA_UIToast showToastInParentView:rootView withText:nsmessage withDuration:duration];
+    [CPAPI_UIToast showToastInParentView:rootView withText:nsmessage withDuration:duration];
 }
 
 

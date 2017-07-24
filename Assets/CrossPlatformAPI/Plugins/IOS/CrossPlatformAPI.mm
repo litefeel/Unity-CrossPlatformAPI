@@ -1,5 +1,5 @@
 #import "CrossPlatformAPI.h"
-#import "CPA_Common.h"
+#import "CPAPI_Common.h"
 
 @implementation SaveToAlbumObj
 
