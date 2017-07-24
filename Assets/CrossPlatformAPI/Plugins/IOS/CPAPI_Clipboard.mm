@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 #import "CPAPI_COMMON.h"
 #import "CPAPI_Clipboard.h"
 

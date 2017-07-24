@@ -1,3 +1,5 @@
+#import <Foundation/Foundation.h>
+
 
 @interface CPAPI_Share : UIViewController
 {

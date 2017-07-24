@@ -26,7 +26,7 @@ struct _CPAPI_AlertParams {
 
 @end
 
-@interface CPA_UIToast : UIView
+@interface CPAPI_UIToast : UIView
 
 @property (strong, nonatomic) NSString *text;
 
@@ -38,7 +38,7 @@ struct _CPAPI_AlertParams {
 extern "C" {
 #endif
     
-    void _CPAPI_UI_ShowAlert(struct _CPA_AlertParams params);
+    void _CPAPI_UI_ShowAlert(struct _CPAPI_AlertParams params);
     
     void _CPAPI_UI_ShowToast(const char* message, int longTimeForDisplay);
 

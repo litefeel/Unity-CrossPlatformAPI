@@ -33,7 +33,7 @@ extern "C" {
     void _CPAPI_Album_SaveImage(const char* cfilename)
     {
         NSString *filename = _CPAPICreateNSString(cfilename);
-        [[[SaveToAlbumObj alloc] init] save:filename];
+        [[[CPAPI_Album alloc] init] save:filename];
     }
 
 #ifdef __cplusplus

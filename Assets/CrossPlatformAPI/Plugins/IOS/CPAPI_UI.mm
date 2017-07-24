@@ -70,14 +70,6 @@
 //float const ToastHeight = 50.0f;
 //float const ToastGap = 10.0f;
 
-- (id)initWithFrame:(CGRect)frame
-{
-    self = [super initWithFrame:frame];
-    if (self) {
-        // Initialization code
-    }
-    return self;
-}
 
 + (void)showToastInParentView: (UIView *)parentView withText:(NSString *)text withDuration:(float)duration;
 {
@@ -166,8 +158,10 @@
 
 @end
 
-
-# pragma mark - C API
+#ifdef __cplusplus
+extern "C" {
+#endif
+//# pragma mark - C API
 void _CPAPI_UI_ShowAlert(struct _CPAPI_AlertParams params)
 {
     CPAPI_UIAlert *instance = [[CPAPI_UIAlert alloc] init];
@@ -182,6 +176,8 @@ void _CPAPI_UI_ShowToast(const char* message, int longTimeForDisplay)
     [CPAPI_UIToast showToastInParentView:rootView withText:nsmessage withDuration:duration];
 }
 
-
+#ifdef __cplusplus
+}
+#endif
 
 

@@ -1,3 +1,4 @@
+#import <Foundation/Foundation.h>
 
 
 @interface CPAPI_Album : NSObject
