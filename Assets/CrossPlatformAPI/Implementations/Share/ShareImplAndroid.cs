@@ -10,18 +10,17 @@ namespace litefeel.crossplatformapi
 
         internal ShareImplAndroid()
         {
-            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
-            api.CallStatic("init", new AndroidJavaObject[] { AndroidUtil.GetCurrentActivity() });
+            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.share.Share");
         }
 
         public override void ShareImage(string imagePath, string text = null)
         {
-            api.CallStatic("nativeShareImage", new string[] { imagePath, text });
+            api.CallStatic("shareImage", imagePath, text);
         }
 
         public override void ShareText(string text)
         {
-            api.CallStatic("nativeShareText", new string[] { text });
+            api.CallStatic("shareText", text);
         }
     }
 }

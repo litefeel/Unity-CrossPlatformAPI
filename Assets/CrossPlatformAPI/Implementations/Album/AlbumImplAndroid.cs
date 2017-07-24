@@ -11,13 +11,12 @@ namespace litefeel.crossplatformapi
 
         internal AlbumImplAndroid()
         {
-            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
-            api.CallStatic("init", new AndroidJavaObject[] { AndroidUtil.GetCurrentActivity() });
+            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.album.Album");
         }
         
         public override void SaveImage(string imagePath)
         {
-            api.CallStatic("saveToAlbum", new string[] { imagePath });
+            api.CallStatic("saveImage", imagePath);
         }
     }
 }

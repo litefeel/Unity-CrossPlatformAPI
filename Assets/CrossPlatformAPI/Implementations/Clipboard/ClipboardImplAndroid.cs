@@ -11,18 +11,17 @@ namespace litefeel.crossplatformapi
 
         internal ClipboardImplAndroid()
         {
-            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform");
-            api.CallStatic("init", new AndroidJavaObject[] { AndroidUtil.GetCurrentActivity() });
+            api = new AndroidJavaClass("com.litefeel.crossplatformapi.android.clipboard.Clipboard");
         }
 
         public override void SetText(string text)
         {
-            api.CallStatic("pasteToClipboard", new string[] { text });
+            api.CallStatic("setText", text);
         }
 
         public override string GetText()
         {
-            return api.CallStatic<string>("copyFromClipboard", new string[] { });
+            return api.CallStatic<string>("getText");
         }
     }
 }

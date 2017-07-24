@@ -11,10 +11,9 @@ namespace litefeel.crossplatformapi
             if (inited) return;
             inited = true;
             
-            using (AndroidJavaObject activity = GetCurrentActivity(),
-                helper = new AndroidJavaClass("com.litefeel.crossplatformapi.android.utils.ActivityHelper"))
+            using (var android = new AndroidJavaClass("com.litefeel.crossplatformapi.android.AndroidPlatform"))
             {
-                helper.CallStatic("init", activity);
+                android.CallStatic("init");
             }
         }
 
