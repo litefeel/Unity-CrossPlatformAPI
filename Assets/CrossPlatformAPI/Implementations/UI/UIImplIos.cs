@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 namespace litefeel.crossplatformapi
 {
 
-    public class IosUIImp : UIApi
+    public class UIImplIos : UIApi
     {
 
         struct _AlertParams

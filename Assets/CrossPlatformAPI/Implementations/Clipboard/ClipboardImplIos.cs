@@ -9,19 +9,19 @@ namespace litefeel.crossplatformapi
     {
 
         [DllImport("__Internal")]
-        private static extern void _CPAPIPasteToClipboard(string text);
+        private static extern void _CPAPI_Clipboard_SetText(string text);
 
         [DllImport("__Internal")]
-        private static extern string _CPAPICopyFromClipboard();
+        private static extern string _CPAPI_Clipboard_GetText();
 
         public override void SetText(string text)
         {
-            _CPAPIPasteToClipboard(text);
+            _CPAPI_Clipboard_SetText(text);
         }
 
         public override string GetText()
         {
-            return _CPAPICopyFromClipboard();
+            return _CPAPI_Clipboard_GetText();
         }
     }
 }

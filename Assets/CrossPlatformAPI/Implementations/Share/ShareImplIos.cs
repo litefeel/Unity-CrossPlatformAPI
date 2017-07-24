@@ -10,19 +10,19 @@ namespace litefeel.crossplatformapi
     {
 
         [DllImport("__Internal")]
-        private static extern void _CPAPIShareText(string text);
+        private static extern void _CPAPI_Share_ShareText(string text);
 
         [DllImport("__Internal")]
-        private static extern void _CPAPIShareImage(string imagePath, string text);
+        private static extern void _CPAPI_Share_ShareImage(string imagePath, string text);
 
 
         public override void ShareText(string text)
         {
-            _CPAPIShareText(text);
+            _CPAPI_Share_ShareText(text);
         }
         public override void ShareImage(string imagePath, string text = null)
         {
-            _CPAPIShareImage(imagePath, text);
+            _CPAPI_Share_ShareImage(imagePath, text);
         }
 
     }

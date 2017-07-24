@@ -9,11 +9,11 @@ namespace litefeel.crossplatformapi
     {
 
         [DllImport("__Internal")]
-        private static extern void _CPAPISavaToAlbum(string imagePath);
+        private static extern void _CPAPI_Album_SaveImage(string imagePath);
 
         public override void SaveImage(string imagePath)
         {
-            _CPAPISavaToAlbum(imagePath);
+            _CPAPI_Album_SaveImage(imagePath);
         }
     }
 }
