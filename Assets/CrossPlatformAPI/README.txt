@@ -21,19 +21,41 @@ A unity plugin that provides a unified cross-platform API for Android/iOS
 
 ~~~ C#
 // save image to album
-CrossPlatformAPI.SaveToAlbum(imagePath);
+Album.SaveImage(imagePath);
 
 // set clipboard text
-CrossPlatformAPI.SetToClipboard("this is clipboard text");
+Clipboard.SetText("this is clipboard text");
 
 // get clipboard text
-string text = CrossPlatformAPI.GetFromClipboard();
+string text = Clipboard.GetText();
 
 // share image with text(opation)
-CrossPlatformAPI.ShareImage(imagePath, "this is text");
+Share.ShareImage(imagePath, "this is text");
 
 // share text
-CrossPlatformAPI.ShareText("this is share text");
+Share.ShareText("this is share text");
+
+
+// show toast
+UI.ShowToast("this is toast");
+
+// show alert
+UI.ShowAlert("the title", "this is alert message", "OK");
+
+// or
+AlertParams param = new AlertParams()
+{
+    title = "the title",
+    message = "this is alert message",
+    yesButton = "Yes",
+    noButton = "No",
+    neutralButton = "Neutral"
+};
+param.onButtonPress = (AlertButton button) =>
+{
+    print("the alert button press " + button.ToString());
+};
+UI.ShowAlert(param);
 ~~~
 
 #### Support
