@@ -23,7 +23,11 @@ namespace litefeel.crossplatformapi
             }
 
 #if !UNITY_EDITOR
+#if !UNITY_2017_1_OR_NEWER
             Application.CaptureScreenshot("screenshot.png");
+#else
+            ScreenCapture.CaptureScreenshot("screenshot.png");
+#endif
 #endif
         }
         
