@@ -4,7 +4,9 @@ using System;
 
 namespace litefeel.crossplatformapi
 {
-
+    /// <summary>
+    /// Provide the version number of this plugin.
+    /// </summary>
     public class CrossPlatformAPI : MonoBehaviour
     {
 

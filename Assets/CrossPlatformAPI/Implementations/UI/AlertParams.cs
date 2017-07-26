@@ -5,7 +5,7 @@ namespace litefeel.crossplatformapi
 {
 
     /// <summary>
-    /// The callback that any button pressed.
+    /// The function is callback when any button pressed.
     /// </summary>
     /// <param name="button">Which button was pressed.</param>
     public delegate void OnAlertComplate(AlertButton button);
