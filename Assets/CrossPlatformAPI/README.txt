@@ -66,3 +66,6 @@ UI.ShowAlert(param);
 
 Online Document:
 https://litefeel.github.io/UnityCrossPlatformApi/Documentation/DoxygenOutput/html/
+
+GitHub:
+https://github.com/litefeel/UnityCrossPlatformApi
