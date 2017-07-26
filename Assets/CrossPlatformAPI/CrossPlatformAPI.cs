@@ -15,7 +15,7 @@ namespace litefeel.crossplatformapi
         /// <summary>
         /// Cross platform api version.
         /// </summary>
-        public const string version = "2.0";
+        public const string version = "1.0";
 
         /// <summary>
         /// @deprecated Please use <see cref="Album.SaveImage"/> instead. 
