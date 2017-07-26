@@ -15,7 +15,7 @@ namespace litefeel.crossplatformapi
         private static void Init()
         {
             if (api != null) return;
-            CrossPlatformAPICallback.Init();
+            CrossPlatformAPI.Init();
 #if UNITY_ANDROID && !UNITY_EDITOR
             AndroidUtil.InitCPAPI();
             api = new ClipboardImplAndroid();
