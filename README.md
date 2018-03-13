@@ -1,4 +1,7 @@
 # Unity-CrossPlatfromAPI
+
+[![Build Status](https://travis-ci.org/litefeel/Unity-CrossPlatformAPI.svg?branch=master)](https://travis-ci.org/litefeel/Unity-CrossPlatformAPI)
+
 Android and IOS API for unity.
 
 
