@@ -11,8 +11,8 @@ using System.Text.RegularExpressions;
 
 public class CPAGenTool {
 
-    private static string BasePath = Application.dataPath + "/CrossPlatformAPI";
-    private static string NAMESPACE = "litefeel.crossplatformapi";
+    private static readonly string BasePath = Application.dataPath + "/CrossPlatformAPI";
+    private static readonly string NAMESPACE = "litefeel.crossplatformapi";
 
     [MenuItem("CPAGen/Gen")]
     static void Gen()
@@ -38,7 +38,7 @@ public class CPAGenTool {
             .ToList<Type>();
     }
     
-    private static string TopClassFormat = @"
+    private static readonly string TopClassFormat = @"
 using UnityEngine;
 using System.Collections;
 
@@ -66,7 +66,7 @@ namespace litefeel.crossplatformapi
 }}
 ";
 
-    private static string TopClassMethod = @"
+    private static readonly string TopClassMethod = @"
 {5}        public static {0} {1}({2})
         {{
             Init();
@@ -112,7 +112,7 @@ namespace litefeel.crossplatformapi
     }
 
 
-    private static string DefaultClassFormat = @"
+    private static readonly string DefaultClassFormat = @"
 namespace litefeel.crossplatformapi
 {{
 #if UNITY_EDITOR || (!UNITY_IOS && !UNITY_ANDROID)
@@ -124,7 +124,7 @@ namespace litefeel.crossplatformapi
 }}
 ";
 
-    private static string DefaultClassMethod = @"
+    private static readonly string DefaultClassMethod = @"
         public override {0} {1}({2})
         {{
             CSharpUtil.PrintInvokeMethod();
