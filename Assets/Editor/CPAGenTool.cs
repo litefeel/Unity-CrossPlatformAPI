@@ -11,7 +11,7 @@ using System.Text.RegularExpressions;
 
 public class CPAGenTool {
 
-    private static readonly string BasePath = Application.dataPath + "/CrossPlatformAPI";
+    private static readonly string BasePath = Application.dataPath + "/Plugins/CrossPlatformAPI";
     private static readonly string NAMESPACE = "litefeel.crossplatformapi";
 
     [MenuItem("CPAGen/Gen")]
