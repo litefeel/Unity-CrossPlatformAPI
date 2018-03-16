@@ -60,7 +60,7 @@ UI.ShowAlert(param);
 
 #### Support
 
-- Create issues to: https://github.com/litefeel/UnityCrossPlatformApi/issues
+- Create issues to: https://github.com/litefeel/Unity-CrossPlatformApi/issues
 - Send email to me: litefeel@gmail.com
 
 
@@ -68,4 +68,4 @@ Online Document:
 https://litefeel.github.io/UnityCrossPlatformApi/Documentation/DoxygenOutput/html/
 
 GitHub:
-https://github.com/litefeel/UnityCrossPlatformApi
+https://github.com/litefeel/Unity-CrossPlatformApi
